@@ -73,17 +73,11 @@ public class Main {
 
     /** Úkol 4
      * Dostane jako parametr list čísel. Vypíše čísla na obrazovku. Každé číslo vypiš na samostatný řádek.
-     * @param list List čísel, která se mají vypsat.
+     * @param results List čísel, která se mají vypsat.
      */
-    public static void printAllIntegersFromList(List<Integer> list) {
-        List<Integer> number = new ArrayList<>();
-        int input = Support.safeReadInt();
-        while (input > 0) {
-            number.add(input);
-            input = Support.safeReadInt();
+    public static void printAllIntegersFromList(List<Integer> results) {
 
-        }
-        System.out.println(number);
+        results.forEach(System.out::println);
     }
 
     /** Úkol 5
@@ -143,9 +137,9 @@ public class Main {
     public static void printIntegersWithReplace(List<Integer> list) {
         List<String> results = new ArrayList<>();
         int input = Support.safeReadInt();
-        String one = "one";
-        String two = "two";
-        String three = "three";
+        final String one = "one";
+        final String two = "two";
+        final String three = "three";
         while (input > 0) {
             if (input == 1) {
                 results.add(one);
@@ -155,8 +149,10 @@ public class Main {
                 results.add(three);
             } else {
                 results.add(String.valueOf(input));
-                input = Support.safeReadInt();
             }
+            // Nové číslo se načte vždy, bez ohledu na to,
+            // kterou větví příkazu if jsi šel...:
+            input = Support.safeReadInt();
         }
         System.out.println(results);
     }
